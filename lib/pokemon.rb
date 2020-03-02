@@ -25,18 +25,10 @@ class Pokemon
       SELECT * 
       FROM pokemon
       WHERE id = ?
-      LIMIT 1
       SQL
 
-    db.execute(sql, id).map do | row |
-      id = row[0][0]
-      name = row[0][1]
-      type = row[0][2]
-      db = row[0][3]
-      pokemon = Pokemon.new(id, name, type, db)
-      pokemon
-    end
+    attributes = db.execute(sql, id)[0]
+    Pokemon.new(attributes[0], attributes[1], attributes[2], attributes[3])
   end
-  
 end
 
