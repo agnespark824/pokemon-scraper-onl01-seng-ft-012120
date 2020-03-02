@@ -28,7 +28,7 @@ class Pokemon
       SQL
 
     attributes = db.execute(sql, id)[0]
-    Pokemon.new(attributes[0], attributes[1], attributes[2], attributes[3])
+    Pokemon.new(id: attributes[0], name: attributes[1], type: attributes[2], db: attributes[3])
   end
 end
 
