@@ -28,7 +28,7 @@ class Pokemon
       LIMIT 1
       SQL
 
-    db.execute(sql, id).map do | row |
+    db.execute(sql, [id]).map do | row |
       id = row[0][0]
       name = row[0][1]
       type = row[0][2]
