@@ -25,7 +25,7 @@ class Pokemon
       WHERE id = ?
       LIMIT 1
       SQL
-    @db.execute(sql).map do | row |
+    @db.execute(sql, self.id).map do | row |
       id = row[0]
       name = row[1]
       type = row[2]
