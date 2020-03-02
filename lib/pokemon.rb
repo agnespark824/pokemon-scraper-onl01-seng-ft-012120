@@ -1,3 +1,5 @@
+require 'pry'
+
 class Pokemon
   attr_accessor :name, :type, :db
   attr_reader :id
@@ -25,6 +27,7 @@ class Pokemon
       WHERE id = ?
       LIMIT 1
       SQL
+      binding.pry
     @db.execute(sql, id).map do | row |
       id = row[0]
       name = row[1]
