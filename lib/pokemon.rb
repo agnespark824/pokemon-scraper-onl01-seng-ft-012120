@@ -14,7 +14,7 @@ class Pokemon
         INSERT INTO pokemon (name, type)
         VALUES (?, ?)
         SQL
-    @db.execute(sql, self.name, self.type)
+    @db.execute(sql, name, type)
     @id = @db.execute("SELECT last_insert_rowid() FROM pokemon")[0][0]
   end
   
@@ -25,12 +25,12 @@ class Pokemon
       WHERE id = ?
       LIMIT 1
       SQL
-    @db.execute(sql, self.id).map do | row |
+    @db.execute(sql, id).map do | row |
       id = row[0]
       name = row[1]
       type = row[2]
       db = row[3]
-      pokemon = Pokemon.new(id, name, type, db)
+      pokemon = Pokemon.new(id: id, name: name, type: type, db: db)
       pokemon
     end
   end
