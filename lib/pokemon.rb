@@ -29,10 +29,10 @@ class Pokemon
       SQL
 
     db.execute(sql, id).map do | row |
-      id = row[0]
-      name = row[1]
-      type = row[2]
-      db = row[3]
+      id = row[0][0]
+      name = row[0][1]
+      type = row[0][2]
+      db = row[0][3]
       pokemon = Pokemon.new(id, name, type, db)
       pokemon
     end
